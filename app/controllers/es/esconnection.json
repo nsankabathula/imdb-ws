@@ -1,0 +1,10 @@
+{
+    "host": [
+        {
+            "host": "localhost",
+            "protocol": "http",
+            "port": 9200
+        }
+    ],
+    "log": "error"
+}
