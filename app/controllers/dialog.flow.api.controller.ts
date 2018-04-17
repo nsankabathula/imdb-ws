@@ -28,6 +28,16 @@ const dialogFlowModelDefault = {
     }
 }
 
+const REQUEST_OPTIONS = {
+    uri: 'http://localhost:3000/esearch/',
+    qs: {
+        'function': 'search'
+    },
+    json: true,
+    method: 'GET',
+    body: null
+};
+
 @JsonController()
 export class DialogFlowApiController {
     dfRequest: any = {};
@@ -164,16 +174,7 @@ export class DialogFlowApiController {
                     };
                     console.log('queryBody', JSON.stringify(queryBody));
                     return new Promise(function (resolve, reject): void {
-                        const ES_REQUEST_OPTIONS = {
-                            uri: 'http://683dd3cd.ngrok.io/esearch/',
-                            qs: {
-                                'function': 'search'
-                            },
-                            json: true,
-                            method: 'GET',
-                            body: queryBody
-                        };
-
+                        const ES_REQUEST_OPTIONS = Object.assign(JSON.parse(JSON.stringify(REQUEST_OPTIONS)), { body: queryBody })
 
                         rp(ES_REQUEST_OPTIONS)
                             .then(function (esResult: any) {
@@ -256,16 +257,7 @@ export class DialogFlowApiController {
                     };
                     console.log('queryBody', queryBody);
                     return new Promise(function (resolve, reject): void {
-                        const ES_REQUEST_OPTIONS = {
-                            uri: 'http://683dd3cd.ngrok.io/esearch/',
-                            qs: {
-                                'function': 'search'
-                            },
-                            json: true,
-                            method: 'GET',
-                            body: queryBody
-                        };
-
+                        const ES_REQUEST_OPTIONS = Object.assign(JSON.parse(JSON.stringify(REQUEST_OPTIONS)), { body: queryBody })
 
                         rp(ES_REQUEST_OPTIONS)
                             .then(function (esResult: any) {
